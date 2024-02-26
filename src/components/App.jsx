@@ -15,14 +15,16 @@ const shoppingList = [
 
 const App = () => {
   const [groceryItem, setGroceryItem] = useState("");
-  const [groceryList, setGroceryList] = useState(() => {
-    const storedList = localStorage.getItem("groceryList");
-    return storedList ? JSON.parse(storedList) : shoppingList;
-  });
+  // const [groceryList, setGroceryList] = useState(() => {
+  //   const storedList = localStorage.getItem("groceryList");
+  //   return storedList ? JSON.parse(storedList) : shoppingList;
+  // });
 
-  useEffect(() => {
-    localStorage.setItem("groceryList", JSON.stringify(groceryList));
-  }, [groceryList]);
+  const [groceryList, setGroceryList] = useState([]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("groceryList", JSON.stringify(groceryList));
+  // }, [groceryList]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -47,7 +49,7 @@ const App = () => {
       "Tüm listeyi silmek istediğinden emin misin?"
     );
     if (isConfirmed) {
-      localStorage.removeItem("groceryList");
+      // localStorage.removeItem("groceryList");
       setGroceryList([]);
     }
   };
